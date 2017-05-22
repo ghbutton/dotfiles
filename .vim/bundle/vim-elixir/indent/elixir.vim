@@ -1,119 +1,44 @@
-" Vim indent file
-" Language: Elixir
-" Maintainer: Carlos Galdino <carloshsgaldino@gmail.com>
-" Last Change: 2013 Apr 24
-
 if exists("b:did_indent")
   finish
-endif
+end
 let b:did_indent = 1
 
-setlocal nosmartindent
+setlocal indentexpr=elixir#indent(v:lnum)
 
-setlocal indentexpr=GetElixirIndent()
-setlocal indentkeys+=0=end,0=else,0=match,0=elsif,0=catch,0=after,0=rescue
+setlocal indentkeys+=0=end,0=catch,0=rescue,0=after,0=else,0=do,*<Return>,=->,0},0],0),0=\|>,0=<>
+" TODO: @jbodah 2017-02-27: all operators should cause reindent when typed
 
-if exists("*GetElixirIndent")
-  finish
-endif
+function! elixir#indent(lnum)
+  let lnum = a:lnum
+  let text = getline(lnum)
+  let prev_nb_lnum = prevnonblank(lnum-1)
+  let prev_nb_text = getline(prev_nb_lnum)
 
-let s:cpo_save = &cpo
-set cpo&vim
+  call elixir#indent#debug("==> Indenting line " . lnum)
+  call elixir#indent#debug("text = '" . text . "'")
 
-let s:skip_syntax  = '\%(Comment\|String\)$'
-let s:block_skip   = "synIDattr(synID(line('.'),col('.'),1),'name') =~? '" . s:skip_syntax . "'"
-let s:block_start  = 'do\|fn'
-let s:block_middle = 'else\|match\|elsif\|catch\|after\|rescue'
-let s:block_end    = 'end'
-let s:symbols_end  = '\]\|}'
-let s:arrow        = '^.*->$'
-let s:pipeline     = '^\s*|>.*$'
-
-let s:indent_keywords   = '\<\%(' . s:block_start . '\|' . s:block_middle . '\)$' . '\|' . s:arrow
-let s:deindent_keywords = '^\s*\<\%(' . s:block_end . '\|' . s:block_middle . '\)\>' . '\|' . s:arrow
-
-function! GetElixirIndent()
-  let lnum = prevnonblank(v:lnum - 1)
-  let ind  = indent(lnum)
-
-  " At the start of the file use zero indent.
-  if lnum == 0
-    return 0
-  endif
-
-  " TODO: Remove these 2 lines
-  " I don't know why, but for the test on spec/indent/lists_spec.rb:24.
-  " Vim is making some mess on parsing the syntax of 'end', it is being
-  " recognized as 'elixirString' when should be recognized as 'elixirBlock'.
-  " This forces vim to sync the syntax.
-  call synID(v:lnum, 1, 1)
-  syntax sync fromstart
-
-  if synIDattr(synID(v:lnum, 1, 1), "name") !~ s:skip_syntax
-    let current_line = getline(v:lnum)
-    let last_line = getline(lnum)
-
-    let splited_line = split(last_line, '\zs')
-    let opened_symbol = 0
-    let opened_symbol += count(splited_line, '[') - count(splited_line, ']')
-    let opened_symbol += count(splited_line, '{') - count(splited_line, '}')
-
-    let ind += opened_symbol * &sw
-
-    if last_line =~ '^\s*\(' . s:symbols_end . '\)'
-      let ind += &sw
+  let handlers = [
+        \'top_of_file',
+        \'starts_with_end',
+        \'starts_with_mid_or_end_block_keyword',
+        \'following_trailing_do',
+        \'following_trailing_binary_operator',
+        \'starts_with_pipe',
+        \'starts_with_close_bracket',
+        \'starts_with_binary_operator',
+        \'inside_nested_construct',
+        \'starts_with_comment',
+        \'inside_generic_block'
+        \]
+  for handler in handlers
+    call elixir#indent#debug('testing handler elixir#indent#handle_'.handler)
+    let indent = function('elixir#indent#handle_'.handler)(lnum, text, prev_nb_lnum, prev_nb_text)
+    if indent != -1
+      call elixir#indent#debug('line '.lnum.': elixir#indent#handle_'.handler.' returned '.indent)
+      return indent
     endif
+  endfor
 
-    if current_line =~ '^\s*\(' . s:symbols_end . '\)'
-      let ind -= &sw
-    endif
-
-    if last_line =~ s:indent_keywords
-      let ind += &sw
-    endif
-
-    " if line starts with pipeline
-    " and last line contains pipeline(s)
-    " align them
-    if last_line =~ '|>.*$' &&
-          \ current_line =~ s:pipeline
-      let ind = float2nr(match(last_line, '|>') / &sw) * &sw
-
-    " if line starts with pipeline
-    " and last line is an attribution
-    " indents pipeline in same level as attribution
-    elseif current_line =~ s:pipeline &&
-          \ last_line =~ '^[^=]\+=.\+$'
-      let b:old_ind = ind
-      let ind = float2nr(matchend(last_line, '=\s*[^ ]') / &sw) * &sw
-    endif
-
-    " if last line starts with pipeline
-    " and current line doesn't start with pipeline
-    " returns the indentation before the pipeline
-    if last_line =~ s:pipeline &&
-          \ current_line !~ s:pipeline
-      let ind = b:old_ind
-    endif
-
-    if current_line =~ s:deindent_keywords
-      let bslnum = searchpair( '\<\%(' . s:block_start . '\):\@!\>',
-            \ '\<\%(' . s:block_middle . '\):\@!\>\zs',
-            \ '\<:\@<!' . s:block_end . '\>\zs',
-            \ 'nbW',
-            \ s:block_skip )
-
-      let ind = indent(bslnum)
-    endif
-
-    " indent case statements '->'
-    if current_line =~ s:arrow
-      let ind += &sw
-    endif
-  endif
-
-  return ind
+  call elixir#indent#debug("defaulting")
+  return 0
 endfunction
-
-let &cpo = s:cpo_save
-unlet s:cpo_save
