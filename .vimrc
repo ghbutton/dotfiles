@@ -70,6 +70,9 @@ nnoremap ; :
 vnoremap < <gv
 vnoremap > >gv
 
+" allow dot operator to work on all lines
+vnoremap . :norm.<CR>
+
 " shorter keystrokes for split navigation
 noremap <C-h> <C-w>h
 noremap <C-j> <C-w>j
