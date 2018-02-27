@@ -23,3 +23,6 @@ if [ \! -L "$HOME/.cargo/config" ]; then
 
   ln -sv "$HOME/.cargo/config" "$HOME/.cargo/"
 fi
+
+# TO RUN:
+# git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
