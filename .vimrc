@@ -46,15 +46,15 @@ filetype plugin indent on
 set wildmenu              " show matches on tab-completion
 set incsearch             " show matches while typing search string
 set noshowmatch           " don't jump to matching bracket after typing closing bracket
-set foldmethod=syntax     " fold code based on syntax
-set foldlevel=3
+" set foldmethod=syntax     " fold code based on syntax
+" set foldlevel=3
 set nostartofline         " keep cursor in same column during motion commands
 set modeline              " read modelines
 set mouse=a               " enable mouse in all modes
 set updatetime=100        " delay (ms) before CursorHold event
 set dir=/tmp              " write swap files to /tmp
 
-set foldtext=getline(v:foldstart)
+" set foldtext=getline(v:foldstart)
 set fillchars="vert:|"
 
 " indentation preferences
@@ -233,7 +233,7 @@ let g:tagbar_sort        = 1
 let g:tagbar_compact     = 0
 let g:tagbar_expand      = 0
 let g:tagbar_singleclick = 1
-let g:tagbar_foldlevel   = 4
+" let g:tagbar_foldlevel   = 4
 let g:tagbar_iconchars   = ['▶', '▼']
 let g:tagbar_autoshowtag = 0
 

@@ -83,6 +83,11 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+# Imports above the local rc
+export ERL_AFLAGS="-kernel shell_history enabled"
+
+# End imports
+
 if [ -f "$HOME/.localrc" ]; then
   source "$HOME/.localrc"
 fi
