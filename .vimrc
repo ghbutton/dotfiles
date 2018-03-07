@@ -10,7 +10,6 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'elixir-lang/vim-elixir'
-Plugin 'fatih/vim-go'
 Plugin 'tomtom/quickfixsigns_vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'vim-syntastic/syntastic'
@@ -46,15 +45,17 @@ filetype plugin indent on
 set wildmenu              " show matches on tab-completion
 set incsearch             " show matches while typing search string
 set noshowmatch           " don't jump to matching bracket after typing closing bracket
-" set foldmethod=syntax     " fold code based on syntax
-" set foldlevel=3
+set foldmethod=syntax     " fold code based on syntax
+" set foldlevel=99
+set nofoldenable
+" set foldlevelstart=99
 set nostartofline         " keep cursor in same column during motion commands
 set modeline              " read modelines
 set mouse=a               " enable mouse in all modes
 set updatetime=100        " delay (ms) before CursorHold event
 set dir=/tmp              " write swap files to /tmp
 
-" set foldtext=getline(v:foldstart)
+set foldtext=getline(v:foldstart)
 set fillchars="vert:|"
 
 " indentation preferences
@@ -233,7 +234,6 @@ let g:tagbar_sort        = 1
 let g:tagbar_compact     = 0
 let g:tagbar_expand      = 0
 let g:tagbar_singleclick = 1
-" let g:tagbar_foldlevel   = 4
 let g:tagbar_iconchars   = ['▶', '▼']
 let g:tagbar_autoshowtag = 0
 
@@ -343,4 +343,3 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
-
