@@ -19,6 +19,7 @@ Plugin 'slim-template/vim-slim'
 Plugin 'kien/ctrlp.vim'
 Plugin 'slashmili/alchemist.vim'
 Plugin 'tpope/vim-fugitive'
+Plugin 'nanotech/jellybeans.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
