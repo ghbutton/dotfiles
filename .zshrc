@@ -1,5 +1,5 @@
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/gary.button/.oh-my-zsh
+export ZSH=/Users/$USER/.oh-my-zsh
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -87,6 +87,10 @@ source $ZSH/oh-my-zsh.sh
 export ERL_AFLAGS="-kernel shell_history enabled"
 
 # End imports
+
+# Custom
+alias vim="nvim"
+# End Custom
 
 if [ -f "$HOME/.localrc" ]; then
   source "$HOME/.localrc"
