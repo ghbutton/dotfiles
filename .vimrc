@@ -9,9 +9,9 @@ call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'elixir-lang/vim-elixir'
 Plugin 'tomtom/quickfixsigns_vim'
 Plugin 'scrooloose/nerdtree'
+Plugin 'sheerun/vim-polyglot'
 Plugin 'vim-syntastic/syntastic'
 Plugin 'jezcope/vim-align'
 Plugin 'tpope/vim-rails'
@@ -40,7 +40,7 @@ behave xterm
 syntax on
 syntax sync fromstart
 colorscheme jellybeans
-filetype plugin indent on
+" filetype plugin indent on
 
 " editor behavior
 set wildmenu              " show matches on tab-completion
@@ -336,11 +336,11 @@ map <C-n> :NERDTreeToggle<CR>
 let g:ctrlp_map = '<c-p>'
 
 " syntastic
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
+" set statusline+=%#warningmsg#
+" set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%*
+"
+" let g:syntastic_always_populate_loc_list = 1
+" let g:syntastic_auto_loc_list = 1
+" let g:syntastic_check_on_open = 1
+" let g:syntastic_check_on_wq = 0

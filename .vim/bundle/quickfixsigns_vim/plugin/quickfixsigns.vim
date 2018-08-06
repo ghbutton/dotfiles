@@ -4,8 +4,8 @@
 " @GIT:         http://github.com/tomtom/quickfixsigns_vim/
 " @License:     GPL (see http://www.gnu.org/licenses/gpl.txt)
 " @Created:     2009-03-14.
-" @Last Change: 2017-05-30.
-" @Revision:    1507
+" @Last Change: 2017-10-12.
+" @Revision:    1517
 " GetLatestVimScripts: 2584 1 :AutoInstall: quickfixsigns.vim
 
 if &cp || exists("g:loaded_quickfixsigns") || !has('signs')
@@ -64,7 +64,8 @@ if !exists('g:quickfixsigns_classes')
     "   loc     ... |location| list
     "   vcsdiff ... mark changed lines (see |quickfixsigns#vcsdiff#GetList()|)
     "   vcsmerge .. merge conflicts produced by VCS like Git
-    "   marks   ... marks |'a|-zA-Z (see also " |g:quickfixsigns_marks|)
+    "   marks   ... marks |'a|-zA-Z (see also |g:quickfixsigns#marks#global| 
+    "               and |g:quickfixsigns#marks#buffer|)
     "
     " The sign classes are defined in g:quickfixsigns_class_{NAME}.
     "
@@ -149,7 +150,7 @@ endif
 if !exists('g:quickfixsigns_sign_may_use_double')
     " FIX Confliction between quickfixsigns_vim and ambiwidth=double
     " https://github.com/tomtom/quickfixsigns_vim/issues/72
-    let g:quickfixsigns_sign_may_use_double = !exists('ambiwidth') || &ambiwidth ==# 'single'   "{{{2
+    let g:quickfixsigns_sign_may_use_double = !exists('&ambiwidth') || &ambiwidth ==# 'single'   "{{{2
 endif
 
 
@@ -294,9 +295,10 @@ function! s:DefineSign(name, text, texthl, icon_name) abort "{{{3
 endf
 
 call s:DefineSign('QFS_CURSOR', '-', 'Question', 'cursor')
-call s:DefineSign('QFS_DUMMY', '.', 'NonText', '')
-call s:DefineSign('QFS_QFL', &enc ==? 'utf-8' ? '╠' : '*', 'WarningMsg', 'qfl')
-call s:DefineSign('QFS_LOC', &enc ==? 'utf-8' ? '├' : '>', 'Special', 'loc')
+" ╠►☼☺‡
+" ├⇒→◊☻†
+call s:DefineSign('QFS_QFL', (g:quickfixsigns_sign_may_use_double && &enc ==? 'utf-8' ? '►' : '*'),'WarningMsg', 'qfl')
+call s:DefineSign('QFS_LOC', (g:quickfixsigns_sign_may_use_double && &enc ==? 'utf-8' ? '◊' : '>'), 'Special', 'loc')
 
 for s:char in split(g:quickfixsigns_list_types, '\zs')
     call s:DefineSign('QFS_QFL_'. s:char, (g:quickfixsigns_sign_may_use_double && &enc ==? 'utf-8' ? '║' : '*') . s:char, 'WarningMsg', 'qfl_'. s:char)
@@ -1004,6 +1006,7 @@ augroup QuickFixSigns
     autocmd BufLeave * if !v:dying | call s:PurgeRegister() | endif
     autocmd BufDelete * call s:RemoveBuffer(expand("<abuf>"), 1)
     if g:quickfixsigns_use_dummy
+        call s:DefineSign('QFS_DUMMY', '.', 'NonText', '')
         exec "autocmd BufRead,BufNewFile * exec 'sign place' (". s:quickfixsigns_base ." - expand('<abuf>')) 'name=QFS_DUMMY line=1 buffer='. expand('<abuf>')"
     endif
     autocmd User WokmarksChange if index(g:quickfixsigns_classes, 'marks') != -1 | call QuickfixsignsUpdate("marks") | endif

@@ -1,2 +1,2 @@
-QuickfixsignsSelect qfl
-let g:quickfixsigns_balloon=1
+"QuickfixsignsSelect qfl
+"let g:quickfixsigns_balloon=1

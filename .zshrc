@@ -90,6 +90,7 @@ export ERL_AFLAGS="-kernel shell_history enabled"
 
 # Custom
 alias vim="nvim"
+alias clear_vpn="sudo route -n delete vpn2.garyhbutton.com"
 # End Custom
 
 if [ -f "$HOME/.localrc" ]; then
