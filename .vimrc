@@ -340,7 +340,7 @@ let g:ctrlp_map = '<c-p>'
 let g:ctrlp_max_files=20000
 let g:ctrlp_custom_ignore='.git$\|node_modules$\|_build$\|_pgdata$\|deps$'
 
-command Filename let @" = expand("%")
+command Filename let @+ = expand("%")
 
 " syntastic
 " set statusline+=%#warningmsg#
