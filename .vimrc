@@ -14,12 +14,15 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'sheerun/vim-polyglot'
 Plugin 'vim-syntastic/syntastic'
 Plugin 'jezcope/vim-align'
-Plugin 'tpope/vim-rails'
 Plugin 'slim-template/vim-slim'
 Plugin 'kien/ctrlp.vim'
 Plugin 'slashmili/alchemist.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'nanotech/jellybeans.vim'
+
+" Language specific
+Plugin 'elixir-editors/vim-elixir'
+Plugin 'tpope/vim-rails'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -336,6 +339,8 @@ map <C-n> :NERDTreeToggle<CR>
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_max_files=20000
 let g:ctrlp_custom_ignore='.git$\|node_modules$\|_build$\|_pgdata$\|deps$'
+
+command Filename let @" = expand("%")
 
 " syntastic
 " set statusline+=%#warningmsg#
