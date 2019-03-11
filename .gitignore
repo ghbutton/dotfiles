@@ -17,3 +17,6 @@ tags
 .cargo/registry
 .cargo/bin/
 .cargo/env
+
+# ignore bundle files
+.vim/bundle
