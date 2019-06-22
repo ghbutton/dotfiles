@@ -91,6 +91,9 @@ export ERL_AFLAGS="-kernel shell_history enabled"
 # Custom
 alias vim="nvim"
 alias clear_vpn="sudo route -n delete vpn2.garyhbutton.com"
+export REACT_APP_IRON_WS_PROTOCOL="ws"
+export REACT_APP_IRON_WS_URL="localhost"
+export REACT_APP_IRON_WS_PORT="4000"
 # End Custom
 
 if [ -f "$HOME/.localrc" ]; then
