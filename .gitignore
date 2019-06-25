@@ -19,4 +19,4 @@ tags
 .cargo/env
 
 # ignore bundle files
-.vim/bundle
+.vim/bundle/*
