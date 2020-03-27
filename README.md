@@ -1,5 +1,5 @@
-* Personal dotfile
-** To install
+# Personal dotfile
+## To install
 - $ git clone git@github.com:ghbutton/dotfiles.git
 - $ cd dotfiles
 - $ ./setup.sh
