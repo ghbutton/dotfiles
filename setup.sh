@@ -5,9 +5,9 @@ if [ -f "$HOME/.bashrc" -a \! -L "$HOME/.bashrc" ]; then
   mv -v "$HOME/.bashrc" "$HOME/.bashrc_default"
 fi
 
-# link dotfiles (skip .git directory and setup.sh; handle .cargo/config separately)
+# link dotfiles (skip .git directory and setup.sh; handle .cargo/config separately; dont copy README)
 for file in $(ls -A "$HOME/dotfiles/"); do
-  if [ "$file" = ".git" -o "$file" = "setup.sh" -o "$file" = ".cargo" ]; then
+  if [ "$file" = ".git" -o "$file" = "setup.sh" -o "$file" = ".cargo" -o "$file" = "README.md" ]; then
     continue
   fi
 
