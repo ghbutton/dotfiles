@@ -14,10 +14,11 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'sheerun/vim-polyglot'
 Plugin 'jezcope/vim-align'
 Plugin 'slim-template/vim-slim'
-Plugin 'kien/ctrlp.vim'
 Plugin 'slashmili/alchemist.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'nanotech/jellybeans.vim'
+Plugin 'junegunn/fzf'
+Plugin 'junegunn/fzf.vim'
 
 " Language specific
 Plugin 'elixir-editors/vim-elixir'
@@ -117,14 +118,6 @@ noremap <C-h> <C-w>h
 noremap <C-j> <C-w>j
 noremap <C-k> <C-w>k
 noremap <C-l> <C-w>l
-
-" tab navigation
-nnoremap <C-U> :tabprevious<CR>
-nnoremap <C-O> :tabnext<CR>
-
-" tab creation
-nnoremap <C-I> :tabnew<CR>
-nnoremap <C-D> :tabclose<CR>
 
 " disable those damn arrow keys
 nnoremap <up>    <nop>
@@ -343,9 +336,10 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 " NERDTree shortcut
 map <C-n> :NERDTreeToggle<CR>
 
-" ctrlp shortcut
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_max_files=20000
-let g:ctrlp_custom_ignore='.git$\|node_modules$\|_build$\|_pgdata$\|deps$'
+" fzf
+nnoremap <C-p> :Files<CR>
+nnoremap <C-o> :Buffers<CR>
+nnoremap <C-g> :GFiles<CR>
+nnoremap <C-i> :Rg!
 
 command Filename let @+ = expand("%")
