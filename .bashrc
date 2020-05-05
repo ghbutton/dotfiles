@@ -3,6 +3,8 @@ if [ -f "$HOME/.bashrc_default" ]; then
   source "$HOME/.bashrc_default"
 fi
 
+source "$HOME/.zshrc"
+
 function __remove_path {
   PATH=$(echo $PATH | tr : '\n' | grep -v -e "^$1\$" | xargs echo | tr ' ' :)
 }

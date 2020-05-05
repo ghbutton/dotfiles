@@ -86,16 +86,37 @@ source $ZSH/oh-my-zsh.sh
 # Imports above the local rc
 export ERL_AFLAGS="-kernel shell_history enabled"
 
+# Ruby flags
+export RUBYOPT="-W0"
+
 # End imports
 
-# Custom
+# CUSTOM
 alias vim="nvim"
 alias clear_vpn="sudo route -n delete vpn2.garyhbutton.com"
+
+# Iron notice
 export REACT_APP_IRON_WS_PROTOCOL="ws"
+export REACT_APP_IRON_HTTP_PROTOCOL="http"
 export REACT_APP_IRON_WS_URL="localhost"
 export REACT_APP_IRON_WS_PORT="4000"
-# End Custom
+
+# Android studio
+export ANDROID_HOME=~/Library/Android/sdk
+export ANDROID_SDK_ROOT=~/Library/Android/sdk
+export ANDROID_AVD_HOME=~/.android/avd
+
+# Rust
+export PATH="$HOME/.cargo/bin:$PATH"
+
+# asdf
+. $HOME/.asdf/asdf.sh
+. $HOME/.asdf/completions/asdf.bash
+
+# END CUSTOM
 
 if [ -f "$HOME/.localrc" ]; then
   source "$HOME/.localrc"
 fi
+
+export EDITOR="nvim"
