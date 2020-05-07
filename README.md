@@ -7,6 +7,8 @@
 
 ## Other programs to install
 - zsh
-- oh-my-zsh
+- [oh-my-zsh](https://ohmyz.sh/)
 - [tmux](https://github.com/tmux/tmux/wiki)
 - [oh-my-tmux](https://github.com/gpakosz/.tmux)
+- ripgrep
+- [asdf](https://github.com/asdf-vm/asdf)

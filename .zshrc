@@ -109,10 +109,6 @@ export ANDROID_AVD_HOME=~/.android/avd
 # Rust
 export PATH="$HOME/.cargo/bin:$PATH"
 
-# asdf
-. $HOME/.asdf/asdf.sh
-. $HOME/.asdf/completions/asdf.bash
-
 # END CUSTOM
 
 if [ -f "$HOME/.localrc" ]; then
