@@ -94,6 +94,7 @@ export RUBYOPT="-W0"
 # CUSTOM
 alias vim="nvim"
 alias clear_vpn="sudo route -n delete vpn2.garyhbutton.com"
+alias be="bundle exec"
 
 # Rust
 export PATH="$HOME/.cargo/bin:$PATH"
