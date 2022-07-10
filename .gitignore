@@ -20,3 +20,6 @@ tags
 
 # ignore bundle files
 .vim/bundle/*
+
+.config/*
+!.config/nvim
