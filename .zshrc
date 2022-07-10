@@ -95,17 +95,6 @@ export RUBYOPT="-W0"
 alias vim="nvim"
 alias clear_vpn="sudo route -n delete vpn2.garyhbutton.com"
 
-# Iron notice
-export REACT_APP_IRON_WS_PROTOCOL="ws"
-export REACT_APP_IRON_HTTP_PROTOCOL="http"
-export REACT_APP_IRON_WS_URL="localhost"
-export REACT_APP_IRON_WS_PORT="4000"
-
-# Android studio
-export ANDROID_HOME=~/Library/Android/sdk
-export ANDROID_SDK_ROOT=~/Library/Android/sdk
-export ANDROID_AVD_HOME=~/.android/avd
-
 # Rust
 export PATH="$HOME/.cargo/bin:$PATH"
 
