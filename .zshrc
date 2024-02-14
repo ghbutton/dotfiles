@@ -99,10 +99,22 @@ alias be="bundle exec"
 # Rust
 export PATH="$HOME/.cargo/bin:$PATH"
 
-# END CUSTOM
 
 if [ -f "$HOME/.localrc" ]; then
   source "$HOME/.localrc"
 fi
 
 export EDITOR="nvim"
+
+# reverse search history
+export HISTSIZE=10000
+export SAVEHIST=10000
+export HISTFILE=~/.zsh_history
+
+bindkey '^R' history-incremental-search-backward
+
+# END CUSTOM
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
+export PATH="/usr/local/opt/libressl/bin:$PATH"

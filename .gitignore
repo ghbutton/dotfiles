@@ -21,5 +21,6 @@ tags
 # ignore bundle files
 .vim/bundle/*
 
+# ignore all config files except for tne nvim one
 .config/*
 !.config/nvim

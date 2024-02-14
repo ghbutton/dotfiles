@@ -45,3 +45,7 @@
   last    = log --format=format:%H -1
   revs    = log --format=format:%H
   preview = diff --staged
+[diff "sopsdiffer"]
+  textconv = sops -d
+[url "ssh://git@github.com/"]
+    insteadOf = https://github.com/
