@@ -113,6 +113,7 @@ export HISTFILE=~/.zsh_history
 
 bindkey '^R' history-incremental-search-backward
 
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 # END CUSTOM
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
