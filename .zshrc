@@ -95,11 +95,12 @@ export RUBYOPT="-W0"
 alias vim="nvim"
 alias clear_vpn="sudo route -n delete vpn2.garyhbutton.com"
 alias be="bundle exec"
+alias ssh-add-github="ssh-add ~/.ssh/id_rsa"
 
 # Rust
 export PATH="$HOME/.cargo/bin:$PATH"
 
-
+# Local path
 if [ -f "$HOME/.localrc" ]; then
   source "$HOME/.localrc"
 fi
@@ -119,3 +120,4 @@ bindkey '^R' history-incremental-search-backward
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
 export PATH="/usr/local/opt/libressl/bin:$PATH"
+export PATH="/usr/local/sbin:$PATH"

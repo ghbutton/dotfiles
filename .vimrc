@@ -5,15 +5,15 @@ set nocompatible
 " Helps force plugins to load correctly when it is turned back on below
 filetype off
 
-" TODO: Load plugins here (pathogen or vundle)
+" May need to do the command `ssh-add-github`  or `ssh-add ~/.ssh/id_rsa`
 call plug#begin()
   Plug 'tpope/vim-sensible' " some defaults
   Plug 'scrooloose/nerdtree' " navigation
   Plug 'tpope/vim-fugitive' " git commands
-  Plug 'junegunn/fzf' " search
-  Plug 'junegunn/fzf.vim' "search
+  Plug 'junegunn/fzf.vim' " search
   Plug 'nanotech/jellybeans.vim' " nice color
   Plug 'sheerun/vim-polyglot' " language highlighting
+  Plug 'tpope/vim-dadbod' " database
 call plug#end()
 
 " Turn on syntax highlighting
@@ -228,3 +228,6 @@ behave xterm
 syntax on
 syntax sync fromstart
 colorscheme jellybeans
+
+"Custom command for getting the filename in VIM
+command Filename let @+ = expand("%")
