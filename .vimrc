@@ -224,7 +224,7 @@ set mouse=a               " enable mouse in all modes
 set updatetime=100        " delay (ms) before CursorHold event
 set dir=/tmp              " write swap files to /tmp
 
-behave xterm
+set mousemodel=extend
 syntax on
 syntax sync fromstart
 colorscheme jellybeans
