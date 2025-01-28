@@ -95,7 +95,7 @@ export RUBYOPT="-W0"
 alias vim="nvim"
 alias clear_vpn="sudo route -n delete vpn2.garyhbutton.com"
 alias be="bundle exec"
-alias ssh-add-github="ssh-add ~/.ssh/id_rsa"
+alias ssh-add-github="ssh-add ~/.ssh/git_id_rsa"
 
 # Rust
 export PATH="$HOME/.cargo/bin:$PATH"
