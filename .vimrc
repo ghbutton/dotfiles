@@ -10,8 +10,8 @@ call plug#begin()
   Plug 'tpope/vim-sensible' " some defaults
   Plug 'scrooloose/nerdtree' " navigation
   Plug 'tpope/vim-fugitive' " git commands
-  Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-  Plug 'junegunn/fzf.vim'
+  Plug 'junegunn/fzf', { 'do': { -> fzf#install() } } " search
+  Plug 'junegunn/fzf.vim' " search
   Plug 'nanotech/jellybeans.vim' " nice color
   Plug 'sheerun/vim-polyglot' " language highlighting
   Plug 'tpope/vim-dadbod' " database
