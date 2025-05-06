@@ -96,6 +96,7 @@ alias vim="nvim"
 alias clear_vpn="sudo route -n delete vpn2.garyhbutton.com"
 alias be="bundle exec"
 alias ssh-add-github="ssh-add ~/.ssh/git_id_rsa"
+alias k="kubectl"
 
 # Rust
 export PATH="$HOME/.cargo/bin:$PATH"
