@@ -125,3 +125,5 @@ export PATH="/usr/local/sbin:$PATH"
 export PATH="$PATH:$HOME/.rvm/bin"
 
 autoload -U +X bashcompinit && bashcompinit
+
+. "$HOME/.local/bin/env"

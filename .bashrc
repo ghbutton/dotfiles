@@ -49,3 +49,5 @@ export BASHRC=true
 export PATH="$PATH:$HOME/.rvm/bin"
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+. "$HOME/.local/bin/env"
