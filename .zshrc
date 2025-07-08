@@ -116,14 +116,20 @@ export HISTFILE=~/.zsh_history
 bindkey '^R' history-incremental-search-backward
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+fortune | cowsay
+
 # END CUSTOM
 
+# Path stuff
 export PATH="/usr/local/opt/libressl/bin:$PATH"
 export PATH="/usr/local/sbin:$PATH"
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
 
+# Bash completion
 autoload -U +X bashcompinit && bashcompinit
 
+# Local bin
 . "$HOME/.local/bin/env"

@@ -7,6 +7,7 @@
 ## Other programs to install
 - iTerm2
 - zsh
+- Brew(https://brew.sh/)
 - [oh-my-zsh](https://ohmyz.sh/)
 - ripgrep (brew install ripgrep)
 - [asdf](https://github.com/asdf-vm/asdf)
@@ -16,6 +17,10 @@
   - :PlugInstall
 - Install Jellybeans, a color scheme
   - https://github.com/nanotech/jellybeans.vim
+- Shellcheck (brew install shellcheck)
+- Silly stuff
+  - brew install fortune
+  - brew install cowsay
 - Mac
   - Update caps lock key
   - Update iTerm2 previous and next tab
