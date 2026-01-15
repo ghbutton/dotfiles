@@ -132,4 +132,8 @@ export PATH="$PATH:$HOME/.rvm/bin"
 autoload -U +X bashcompinit && bashcompinit
 
 # Local bin
-. "$HOME/.local/bin/env"
+if [ -f "$HOME/.local/bin/env" ]; then
+  . "$HOME/.local/bin/env"
+fi
+
+eval "$( /opt/homebrew/bin/brew shellenv )"
