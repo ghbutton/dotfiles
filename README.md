@@ -6,6 +6,7 @@
 
 ## Other programs to install
 - iTerm2
+  - 14 pt font default
 - zsh
 - Brew(https://brew.sh/)
 - [oh-my-zsh](https://ohmyz.sh/)

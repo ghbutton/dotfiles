@@ -117,16 +117,11 @@ bindkey '^R' history-incremental-search-backward
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-fortune | cowsay
+# Homebrew
+eval "$( /opt/homebrew/bin/brew shellenv )"
 
-# END CUSTOM
-
-# Path stuff
-export PATH="/usr/local/opt/libressl/bin:$PATH"
-export PATH="/usr/local/sbin:$PATH"
-
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
+# ASDF shims
+export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
 
 # Bash completion
 autoload -U +X bashcompinit && bashcompinit
@@ -136,4 +131,8 @@ if [ -f "$HOME/.local/bin/env" ]; then
   . "$HOME/.local/bin/env"
 fi
 
-eval "$( /opt/homebrew/bin/brew shellenv )"
+if [[ -o interactive ]]; then
+  fortune | cowsay
+end
+
+# END CUSTOM
