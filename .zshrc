@@ -133,6 +133,6 @@ fi
 
 if [[ -o interactive ]]; then
   fortune | cowsay
-end
+fi
 
 # END CUSTOM
